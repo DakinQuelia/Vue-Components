@@ -208,4 +208,13 @@
     .form .buttons {
         @apply flex mt-2 gap-2;
     }
+
+    .form .error-message,
+    .form .help-message {
+        @apply block mb-1 text-sm;
+    }
+
+    .form .error-message {
+        @apply text-red-600;
+    }
 }

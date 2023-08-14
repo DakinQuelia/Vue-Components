@@ -1,8 +1,10 @@
 <script setup>
-import { computed, provide } from "vue";
+import { computed, provide, inject } from "vue";
 import { v4 as uuid } from "uuid";
 import { cva } from "class-variance-authority";
 import Label from './Label.vue';
+import HelperMessage from './HelperMessage.vue';
+import ErrorMessage from './ErrorMessage.vue';
 
 const props = defineProps(
 {
@@ -15,18 +17,30 @@ const props = defineProps(
         type: [ String, Object ],
         default: "input"
     },
+    modelValue: [ String, Number ],
     type: String,
-    disabled: Boolean,
     label: String,
+    ariaDescribedBy: String,
+    disabled: Boolean,
     required: Boolean,
+    invalid: Boolean,
     placeholder: String,
     error: String,
     help: String,
+    prepend: Object,
+    append: Object
 });
 
-const ariaDescribedBy = computed(() => 
+const emit = defineEmits([ "update:modelValue" ]);
+
+const helpID = computed(() => 
 {
-    return !!props.help ? `help-${uuid()}` : null;
+    return !!props.help ? `help-${props.id}` : null;
+});
+
+const errorID = computed(() => 
+{
+    return !!props.error ? `error-${props.id}` : null;
 });
 
 const fieldClass = computed(() => 
@@ -51,15 +65,34 @@ const fieldClass = computed(() =>
         disabled: props.disabled
     });
 });
+
+provide("field", computed(() => 
+  {
+    return {
+        ...props,
+        invalid: !!props.error,
+        ariaDescribedBy: helpID.value,
+    };
+  })
+);
+
+const field = inject("field", props);
+
 </script>
 
 <template>
     <div class="field-group">
-        <Label :for="props.id" :required="props.required">
-            {{ props.label }}      
+        <Label :for="field.id" :required="field.required" v-if="field.label">
+            {{ field.label }}      
         </Label>
-        <component :class="fieldClass" :is="props.as" :type="props.type" :placeholder="props.placeholder">
-            <slot v-bind="props" />
+        <component :class="[fieldClass, field.invalid ? 'error' : '']" :is="field.as" :id="field.id" :type="field.type" :placeholder="field.placeholder" :value="field.modelValue" @input="$event => emit('update:modelValue', $event.target.value)" :required="field.required" :invalid="!!field.error" :aria-describedby="helpID">
+            <slot v-bind="field" />
         </component>
+        <ErrorMessage v-if="field.error" :id="errorID">
+            {{ field.error }}
+        </ErrorMessage>
+        <HelperMessage v-if="field.help" :id="helpID">
+            {{ field.help }}
+        </HelperMessage>  
     </div>
 </template>

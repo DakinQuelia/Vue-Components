@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-    <div class="error-message">   
+    <div class="help-message">   
         <slot />
     </div>
 </template>

@@ -12,8 +12,8 @@ const showAlert = ref(true);
 <template>
     <div class="w-[700px]">
         <Form action="/" method="POST" name="test">
-            <Field as="input" type="text" label="Nom d'utilisateur" placeholder="Nom d'utilisateur" />
-            <Field as="textarea" label="Message" placeholder="Message" />
+            <Field as="input" type="text" id="name" label="Nom d'utilisateur" placeholder="Nom d'utilisateur" error="Nom d'utilisateur invalide." />
+            <Field as="textarea" id="message" label="Message" placeholder="Message" required error="Le message est obligatoire." help="Mon aide"  />
         </Form>
     </div>
     <!--
