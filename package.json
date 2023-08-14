@@ -12,6 +12,7 @@
     "@heroicons/vue": "^2.0.18",
     "class-variance-authority": "^0.7.0",
     "heroicons": "^2.0.18",
+    "uuid": "^9.0.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {

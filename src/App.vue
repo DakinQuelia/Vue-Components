@@ -3,15 +3,20 @@ import { ref } from "vue";
 import { EnvelopeIcon } from "@heroicons/vue/20/solid";
 import Tooltip from './components/Tooltip.vue';
 import Alert from './components/Alert.vue';
-import Button from './components/Forms/Button.vue';
+import Form from './components/Forms/Form.vue';
+import Field from './components/Forms/Field.vue';
 
 const showAlert = ref(true);
 </script>
 
 <template>
-    <div>
-
+    <div class="w-[700px]">
+        <Form action="/" method="POST" name="test">
+            <Field as="input" type="text" label="Nom d'utilisateur" placeholder="Nom d'utilisateur" />
+            <Field as="textarea" label="Message" placeholder="Message" />
+        </Form>
     </div>
+    <!--
     <div class="grid min-h-screen place-content-center gap-4">   
         <Alert title="Titre" intent="info" onDismiss="true" :show="showAlert" :on-dismiss="() => showAlert = false">
             Mon message d'information.
@@ -44,7 +49,6 @@ const showAlert = ref(true);
             <Button intent="danger" :leftIcon="EnvelopeIcon" disabled>Annuler</Button>
         </div>
         
-        <!-- 
         <Alert title="Titre" intent="success" onDismiss="true" :show="showAlert" :on-dismiss="() => showAlert = false">
             Mon message d'information.
         </Alert>
@@ -56,7 +60,6 @@ const showAlert = ref(true);
         <Alert title="Titre" intent="warning" onDismiss="true" :show="showAlert" :on-dismiss="() => showAlert = false">
             Mon message d'information.
         </Alert>
-        -->
 
         <Tooltip content="Ceci est mon infobulle en haut d'un long texte..." placement="top">
             <button class="tooltip-button">Cliquez ici</button>
@@ -74,4 +77,5 @@ const showAlert = ref(true);
             <button class="tooltip-button orange">Cliquez ici</button>
         </Tooltip>
     </div>
+    -->
 </template>
