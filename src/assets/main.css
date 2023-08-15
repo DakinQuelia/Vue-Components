@@ -177,22 +177,46 @@
     /** 
     * Forms
     **/
+    .form {
+        @apply w-full;
+    }
+
     .form .required {
        @apply text-red-600 ml-1;
     }
 
     .form .label {
-        @apply mb-1 w-full inline-flex text-sm font-medium text-gray-700;
+        @apply mb-1 w-full inline-flex font-medium text-gray-700;
     }
 
     .form .field-group {
-        @apply mb-2 flex w-full items-center;
+        @apply mb-2 w-full flex content-center;
+    }
+
+    .form .field-group > .col {
+        @apply w-full items-center;
+    }
+
+    .form .field-group > .col .label {
+        @apply pt-2 pr-3 pb-2 pl-3 text-base leading-6;
     }
 
     .form .input-control {
-        @apply w-full rounded-md shadow-sm border-gray-300 focus:border-blue-500 focus:ring-blue-500;
+        @apply rounded-md shadow-sm border-gray-300 focus:border-blue-500 focus:ring-blue-500;
     } 
 
+    .form input[type="text"],
+    .form input[type="date"],
+    .form textarea {
+        @apply w-full;
+    }
+
+    .form input[type="radio"],
+    .form input[type="checkbox"]
+    {
+       @apply rounded-md;
+    }
+    
     .form .field-prepend {
         @apply pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3;
     }
@@ -202,11 +226,11 @@
     }
     
     .form .input-control.error {
-        @apply border-red-500 !important;
+        @apply border-red-500 text-red-600 placeholder-red-500 !important;
     }
 
     .form .buttons {
-        @apply flex mt-2 gap-2;
+        @apply mt-2 gap-2 flex justify-end;
     }
 
     .form .error-message,
@@ -216,5 +240,48 @@
 
     .form .error-message {
         @apply text-red-600;
+    }
+
+    /**
+    * Order Card
+    **/ 
+    .order-card {
+        @apply flex justify-center items-center h-screen bg-gray-200 text-gray-900;
+    }
+
+    .order-card .order-card-content {
+        @apply rounded-md relative w-72 shadow-2xl p-3 bg-white;
+    }
+
+    .order-card .order-card-header {
+        @apply py-2;
+    }
+
+    .order-card .order-card-header .order-title {
+        @apply text-center text-xl font-bold;
+    }
+
+    .order-card .order-card-header .order-subtitle {
+        @apply text-center text-xs font-bold;
+    }
+
+    .order-card .order-separator {
+        @apply  text-center text-xs font-bold mb-1;
+    }
+
+    .order-card .order-infos {
+        @apply text-xs pl-2;
+    }
+
+    .order-card .order-infos .info {
+        @apply text-xs mb-1;
+    }
+
+    .order-card .order-data {
+        @apply border-double border-t-4 border-b-4 border-l-0 border-r-0 border-gray-900 my-3;
+    }
+
+    .order-card .order-data > .header{
+        @apply flex text-sm pt-1 px-1;
     }
 }

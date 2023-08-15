@@ -28,7 +28,9 @@ const props = defineProps(
     error: String,
     help: String,
     prepend: Object,
-    append: Object
+    append: Object,
+    radios: Array,
+    checkboxes: Array
 });
 
 const emit = defineEmits([ "update:modelValue" ]);
@@ -49,10 +51,7 @@ const fieldClass = computed(() =>
     {
         variants: 
         {
-            intent: 
-            {       
-
-            },
+            invalid: "error",
             disabled: 
             {
                 true: "disabled",
@@ -60,7 +59,7 @@ const fieldClass = computed(() =>
         }
     })(
     {
-        intent: props.intent,
+        invalid: props.error,
         type: props.type,
         disabled: props.disabled
     });
@@ -82,17 +81,24 @@ const field = inject("field", props);
 
 <template>
     <div class="field-group">
-        <Label :for="field.id" :required="field.required" v-if="field.label">
-            {{ field.label }}      
-        </Label>
-        <component :class="[fieldClass, field.invalid ? 'error' : '']" :is="field.as" :id="field.id" :type="field.type" :placeholder="field.placeholder" :value="field.modelValue" @input="$event => emit('update:modelValue', $event.target.value)" :required="field.required" :invalid="!!field.error" :aria-describedby="helpID">
-            <slot v-bind="field" />
-        </component>
-        <ErrorMessage v-if="field.error" :id="errorID">
-            {{ field.error }}
-        </ErrorMessage>
-        <HelperMessage v-if="field.help" :id="helpID">
-            {{ field.help }}
-        </HelperMessage>  
+        <div class="col">
+            <Label :for="field.id" :required="field.required" v-if="field.label">
+                {{ field.label }}      
+            </Label>
+        </div>
+        <div class="col">
+            <component :class="[fieldClass, field.invalid ? 'error' : '']" :is="field.as" :id="field.id" :type="field.type" :placeholder="field.placeholder" :value="field.modelValue" @input="$event => emit('update:modelValue', $event.target.value)" :required="field.required" aria-describedby="helpID">
+                <slot v-bind="field" />
+            </component>
+            <Label :for="field.id" :required="field.required" v-if="field.radio">
+                {{ field.label }}      
+            </Label>
+            <ErrorMessage v-if="field.error" :id="errorID">
+                {{ field.error }}
+            </ErrorMessage>
+            <HelperMessage v-if="field.help" :id="helpID">
+                {{ field.help }}
+            </HelperMessage>  
+        </div>
     </div>
 </template>

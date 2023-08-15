@@ -10,10 +10,13 @@ const showAlert = ref(true);
 </script>
 
 <template>
-    <div class="w-[700px]">
+    <div class="w-full flex justify-center">
         <Form action="/" method="POST" name="test">
             <Field as="input" type="text" id="name" label="Nom d'utilisateur" placeholder="Nom d'utilisateur" error="Nom d'utilisateur invalide." />
-            <Field as="textarea" id="message" label="Message" placeholder="Message" required error="Le message est obligatoire." help="Mon aide"  />
+            <Field as="input" type="number" id="mynumber" label="Nombre" /> 
+            <Field as="input" type="radio" id="radio" label="Bouton radio" help="Mon aide sur la case à cocher" />
+            <Field as="input" type="checkbox" id="checkbox" label="Case à cocher" help="Mon aide sur la case à cocher" />
+            <Field as="textarea" id="message" label="Message" placeholder="Message" required error="Le message est obligatoire." help="Mon aide" />
         </Form>
     </div>
     <!--
