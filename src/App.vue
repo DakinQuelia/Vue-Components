@@ -1,12 +1,19 @@
 <script setup>
-import { ref } from "vue";
-import { EnvelopeIcon } from "@heroicons/vue/20/solid";
+import { ref } from "vue";;
 import Tooltip from './components/Tooltip.vue';
 import Alert from './components/Alert.vue';
 import Form from './components/Forms/Form.vue';
 import Field from './components/Forms/Field.vue';
+import Combobox from './components/Forms/Combobox.vue';
 
 const showAlert = ref(true);
+
+const roles = 
+[
+  { value: 1, label: "Marketing" },
+  { value: 2, label: "Administratif" },
+  { value: 3, label: "Support" },
+];
 </script>
 
 <template>
@@ -17,6 +24,7 @@ const showAlert = ref(true);
             <Field as="input" type="radio" id="radio" label="Bouton radio" help="Mon aide sur la case à cocher" />
             <Field as="input" type="checkbox" id="checkbox" label="Case à cocher" help="Mon aide sur la case à cocher" />
             <Field as="textarea" id="message" label="Message" placeholder="Message" required error="Le message est obligatoire." help="Mon aide" />
+            <Combobox label="Défaut" id="users" placeholder="Sélectionnez un rôle" :options="roles" />
         </Form>
     </div>
     <!--

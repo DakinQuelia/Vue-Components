@@ -242,6 +242,46 @@
         @apply text-red-600;
     }
 
+    .form .selector-box {
+
+    }
+
+    .form .selector-box .selector-select {
+        @apply relative py-2 pr-10 pl-3 select-none w-full text-left bg-white rounded-md shadow-sm border-gray-300 focus:border-blue-500 focus:ring-blue-500;
+    }
+
+    .form .selector-box .selector {
+        @apply flex absolute inset-y-0 right-0 items-center pr-2 pointer-events-none
+    }
+
+    .form .selector-box .selector-icon {
+        @apply w-5 h-5 text-gray-400;
+    }
+
+    .form .selector-box .placeholder {
+        @apply  text-gray-500;
+    }
+
+    .form .selector-box-options {
+        @apply overflow-auto absolute z-10 py-1 mt-1 w-full max-h-60 text-base bg-white rounded-md ring-1 shadow-sm border-gray-300 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
+    }
+
+    .form .selector-box-options .item {
+        @apply text-gray-900 relative cursor-default select-none py-2 pl-10 pr-4 text-gray-900;
+    }
+
+    .form .selector-box-options .item.active {
+        @apply bg-amber-100 text-amber-900 !important;
+    }
+
+    .form .selector-box-options .item .selected {
+        @apply font-medium;
+    }
+
+    .form .selector-box-options .item .item-icon {
+        @apply flex absolute inset-y-0 left-0 items-center pl-3 text-amber-600;
+    }
+
     /**
     * Order Card
     **/ 
