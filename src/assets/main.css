@@ -275,7 +275,7 @@
     }
 
     .form .selector-box-options {
-        @apply overflow-auto absolute z-10 py-1 mt-1 w-full max-h-60 text-base bg-white rounded-md ring-1 shadow-sm border border-gray-300 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
+        @apply overflow-auto absolute z-10 py-1 mt-1 w-full max-h-60 text-base bg-white rounded-md ring-1 shadow-sm border-[0.833333px] border-gray-300 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
     }
 
     .form .selector-box-options .item {
