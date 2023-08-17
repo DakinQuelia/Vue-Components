@@ -175,7 +175,7 @@
     }
 
     /** 
-    * Forms
+    *   Forms
     **/
     .form {
         @apply w-full;
@@ -242,12 +242,24 @@
         @apply text-red-600;
     }
 
+    /**
+    *   Forms : Selector Box
+    **/
     .form .selector-box {
-
+        @apply relative;
     }
 
     .form .selector-box .selector-select {
-        @apply relative py-2 pr-10 pl-3 select-none w-full text-left bg-white rounded-md shadow-sm border-gray-300 focus:border-blue-500 focus:ring-blue-500;
+        @apply relative select-none text-left bg-white rounded-md shadow-sm border border-gray-300  focus:border-blue-500 focus:ring-blue-500;
+    }
+
+    .form .selector-box .selector-select:focus,
+    .form .selector-box .selector-select:focus-within {
+        @apply focus:border-blue-500 focus:ring-blue-500;
+    }
+
+    .form .selector-box .selector-select .selector-input {
+        @apply w-full order-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0;
     }
 
     .form .selector-box .selector {
@@ -259,11 +271,11 @@
     }
 
     .form .selector-box .placeholder {
-        @apply  text-gray-500;
+        @apply text-gray-500;
     }
 
     .form .selector-box-options {
-        @apply overflow-auto absolute z-10 py-1 mt-1 w-full max-h-60 text-base bg-white rounded-md ring-1 shadow-sm border-gray-300 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
+        @apply overflow-auto absolute z-10 py-1 mt-1 w-full max-h-60 text-base bg-white rounded-md ring-1 shadow-sm border border-gray-300 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
     }
 
     .form .selector-box-options .item {

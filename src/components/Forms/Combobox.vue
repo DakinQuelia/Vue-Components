@@ -9,7 +9,11 @@ import SelectorIcon from "../Icons/SelectorIcon.vue";
 const props = defineProps({
     label: String,
     default: String,
-    options: Array,
+    options: 
+    {
+        type: Array,
+        default: () => [],
+    },
     modelValue: [String, Number, Array],
     placeholder: 
     {
@@ -44,10 +48,12 @@ const label = computed(() =>
             </Label>
         </div>
         <div class="col">
-            <div class="selector-box">
-                <div class="selector-select" :model-value="props.modelValue" :multiple="props.multiple" @update:modelValue="value => emit('update:modelValue', value)">
-                    <span class="block truncate" v-if="label">{{ label }}</span>
-                    <span class="placeholder" v-else="props.placeholder">{{ props.placeholder }}</span>
+            <div class="selector-box" :model-value="props.modelValue" @update:modelValue="value => emit('update:modelValue', value)">
+                <div class="selector-select">
+                    <div class="selector-input">
+                        <span class="block truncate" v-if="label">{{ label }}</span>
+                        <span class="placeholder" v-else="props.placeholder">{{ props.placeholder }}</span>
+                    </div>
                     <span class="selector">
                         <SelectorIcon aria-hidden="true" class="selector-icon" />
                     </span>
