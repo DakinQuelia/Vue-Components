@@ -250,7 +250,7 @@
     }
 
     .form .selector-box .selector-select {
-        @apply relative select-none text-left bg-white rounded-md shadow-sm border border-gray-300  focus:border-blue-500 focus:ring-blue-500;
+        @apply relative select-none text-left bg-white rounded-md shadow-sm border border-gray-300 focus:border-blue-500 focus:ring-blue-500;
     }
 
     .form .selector-box .selector-select:focus,

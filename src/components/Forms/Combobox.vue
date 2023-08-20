@@ -48,7 +48,7 @@ const label = computed(() =>
             </Label>
         </div>
         <div class="col">
-            <div class="selector-box" :model-value="props.modelValue" @update:modelValue="value => emit('update:modelValue', value)">
+            <div class="selector-box" :model-value="props.modelValue" @update:modelValue="value => emit('update:modelValue', value)" tabindex="0">
                 <div class="selector-select">
                     <div class="selector-input">
                         <span class="block truncate" v-if="label">{{ label }}</span>
